@@ -77,7 +77,7 @@ object GOLBoardSpec : Spek({
         )
 
         describe("Game Predefine model test with Blinker model") {
-            val golBoard = GOLBoard(5, blinkerSeedInput)
+            val golBoard by memoized { GOLBoard(5, blinkerSeedInput) }
 
             on("first iteration") {
                 golBoard.moveToNextGeneration()
@@ -87,6 +87,7 @@ object GOLBoardSpec : Spek({
             }
 
             on("second iteration") {
+                golBoard.moveToNextGeneration()
                 golBoard.moveToNextGeneration()
                 it("should be same as input") {
                     golBoard.getALiveCells() shouldEqual blinkerSeedInput
