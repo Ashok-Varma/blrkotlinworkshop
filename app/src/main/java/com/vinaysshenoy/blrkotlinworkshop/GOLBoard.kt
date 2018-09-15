@@ -21,9 +21,9 @@ class GOLBoard(var cells: List<Cell>) {
     constructor (size: Int) : this(randomMatrix(size))
 
     constructor (size: Int, seed: Set<Pair<Int, Int>>) : this(
-            List(16 * 16) {
-                val x = it / 16
-                val y = it % 16
+            List(size * size) {
+                val x = it / size
+                val y = it % size
                 Cell(x, y, seed.contains(Pair(x, y)))
             })
 
