@@ -42,7 +42,7 @@ abstract class GameOfLifeController<T> : Controller<GameOfLifeUserEvent, GameOfL
             state = state.copy(cells = adaptToViewState(gameState))
             stateReceiver?.receive(state)
           }
-          delay(1L, TimeUnit.SECONDS)
+          delay(250L, TimeUnit.MILLISECONDS)
         }
       }
     }
@@ -68,4 +68,6 @@ abstract class GameOfLifeController<T> : Controller<GameOfLifeUserEvent, GameOfL
   abstract fun step(): T
 
   abstract fun adaptToViewState(gameState: T): List<Cell>
+
+  abstract fun updateSeed(size: Int,randomSeed: Set<Pair<Int, Int>>)
 }

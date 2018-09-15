@@ -38,49 +38,5 @@ object SampleSpec : Spek({
                 }
             }
         }
-
-        describe("produce a matrix") {
-            val size = 2
-            val generatedMatrix = GOLBoard(size).cells
-
-            on("generation of martix") {
-                it("size of list should be square of size") {
-                    generatedMatrix.size shouldEqualTo (size * size)
-                }
-
-                it("No duplication in the generated matrix") {
-                    val cellPositions = mutableListOf(-1)
-                    generatedMatrix.forEach {
-                        val position = it.x * size + it.y
-                        cellPositions.contains(position) shouldEqualTo false
-                        cellPositions.add(position)
-                    }
-                }
-            }
-        }
-
-        describe("finding neighbour cells") {
-            val size = 1
-            val board = GOLBoard(size)
-
-            on("Board with size 1") {
-                it("will always return null") {
-                    val neighbourCells = board.getNumberOfNeighbourCells(board.cells[0])
-                    neighbourCells shouldEqual null
-                }
-            }
-        }
-
-        describe("finding neighbour cells") {
-            val size = 8
-            val board = GOLBoard(size)
-
-            on("Board with size 8") {
-                it("size of list should be square of size") {
-                    val neighbourCells = board.getNumberOfNeighbourCells(board.cells[0])
-                    neighbourCells!!.size shouldEqualTo 3
-                }
-            }
-        }
     }
 })
